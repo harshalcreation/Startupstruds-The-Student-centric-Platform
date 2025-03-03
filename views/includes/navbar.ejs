@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="/" style="color: rgb(182, 21, 21);">
+			<i class="fa-solid fa-compass-drafting"></i> Startupstuds
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+				<a class="nav-link" href="/listings">Dashboard</a>
+				<a class="nav-link" href="/listings/new">Add StartUp</a>
+				
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				
+				
+				<a class="nav-link" href="https://investorconnect.startupindia.gov.in/">Networking</a>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle text-orange" href="#" id="fundingDropdown" role="button" data-bs-toggle="dropdown">
+								Funding
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="fundingDropdown">
+								<li><a class="dropdown-item" href="https://seedfund.startupindia.gov.in/">Startup India Seed Fund Scheme</a></li>
+								<li><a class="dropdown-item" href="https://investorconnect.startupindia.gov.in/">Startup India Investor Connect</a></li>
+								<li><a class="dropdown-item" href="https://www.startupindia.gov.in/content/sih/en/credit-guarantee-scheme-for-startups.html">Credit Guarantee Scheme for Startups</a></li>
+								<li><a class="dropdown-item" href="https://www.startupindia.gov.in/content/sih/en/funding.html">Funding Guide</a></li>
+								<li><a class="dropdown-item" href="https://www.startupindia.gov.in/content/sih/en/government-schemes.html">Central Govt. Schemes and Policies</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+				
+				
+			</div>
+			<div class="navbar-nav ms-auto">
+				<a class="nav-link" href="/listings/chatbot"><i class="fa-solid fa-comments"></i></a>
+				<% if (!currentUser) { %>
+					<strong>
+						<a class="nav-link" href="/signup">Signup</a>
+					</strong>
+					<strong>
+						<a class="nav-link" href="/login">Login</a>
+					</strong>
+				<% } %>
+				<% if (currentUser) { %>
+					<a class="nav-link" href="#"><strong><%= currentUser.username %></strong> |</a>
+					<a class="nav-link" href="/logout">Logout</a>
+					
+				<% } %>
+			</div>
+		</div>
+	</div>
+</nav>
+
+</div>
+

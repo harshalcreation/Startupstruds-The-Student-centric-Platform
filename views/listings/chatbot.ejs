@@ -1,0 +1,124 @@
+<% layout("layouts/boilerplate.ejs") %>
+    <style>
+        body {
+            font-family: 'Roboto Slab', sans-serif;
+            background-color: #efecdb;
+            color: #C38154;
+        }
+
+        .chatbot-container {
+            margin-left: 31%;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            width: 400px;
+            max-width: 100%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            font-size: 16px;
+            color: #5D4037;
+        }
+
+        .chatbox {
+            padding: 20px;
+            flex-grow: 1;
+            overflow-y: auto;
+            height: 400px;
+        }
+
+        .chatbox p {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .user {
+            background-color: #d9fdd3;
+            align-self: flex-end;
+        }
+
+        .bot {
+            background-color: #e3e3e3;
+            align-self: flex-start;
+        }
+
+        .input-container {
+            display: flex;
+            border-top: 1px solid #ddd;
+        }
+
+        .input-container input {
+            flex-grow: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 0;
+            outline: none;
+        }
+
+        .input-container button {
+            background-color: #32c864;
+            color: white;
+            padding: 15px;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .input-container button:hover {
+            background-color: #28a745;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chatbot-container">
+    <div class="chatbox" id="chatbox">
+        <p class="bot">Hello! I'm here to help with recent startups </p>
+        <p class="bot">You can ask me about recent startups openings or questions related to your tech stack.</p>
+    </div>
+    <div class="input-container">
+        <input type="text" id="userInput" placeholder="Type a message..." autocomplete="off">
+        <button onclick="handleUserInput()">Send</button>
+    </div>
+</div>
+
+<script>
+    function appendMessage(message, sender) {
+        const chatbox = document.getElementById('chatbox');
+        const p = document.createElement('p');
+        p.className = sender;
+        p.textContent = message;
+        chatbox.appendChild(p);
+        chatbox.scrollTop = chatbox.scrollHeight;
+    }
+
+    function handleUserInput() {
+        const userInput = document.getElementById('userInput').value;
+        if (userInput.trim() === "") return;
+
+        appendMessage(userInput, 'user');
+        document.getElementById('userInput').value = '';
+
+        setTimeout(() => {
+            const botResponse = getBotResponse(userInput);
+            appendMessage(botResponse, 'bot');
+        }, 1000);
+    }
+
+    function getBotResponse(input) {
+        const text = input.toLowerCase();
+
+        if (text.includes('job') || text.includes('openings')) {
+            return "Currently, we have openings in the following roles: Software Developer, Data Analyst, and IT Support. You can check our website for more details.";
+        } else if (text.includes('google') || text.includes('internships')) {
+            return "Google is currently offering various internships across multiple domains, including engineering, product management, operations, research, and internships.";
+        } else if (text.includes('tcs') || text.includes('technologies internships')) {
+            return "We offer a variety of internships including Data science, data analyst, and many more";
+        } else {
+            return "I'm sorry, I didn't understand that. Can you please ask something else?";
+        }
+    }
+</script>
