@@ -1,9 +1,11 @@
 {
   "name": "major_project",
   "version": "1.0.0",
-  "description": "This is simga batch Major project, Building Airbnb clone , fullStack project using MERN stack :)",
+  "description": "This is sigma batch Major project, Building Airbnb clone, fullStack project using MERN stack :)",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "AlhanCration",
